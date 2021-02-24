@@ -6,7 +6,7 @@
         "php",
         "hyperf"
     ],
-    "description": "",
+    "description": "Some features for Hyperf Middleware.",
     "autoload": {
         "psr-4": {
             "Gemini\\Middleware\\": "src/"
