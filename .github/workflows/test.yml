@@ -35,7 +35,7 @@ jobs:
           rm swoole.tar.gz
           cd swoole
           phpize
-          ./configure --enable-openssl --enable-http2 --enable-swoole-curl --enable-swoole-json
+          ./configure --enable-openssl --enable-http2 --enable-swoole-json
           make -j$(nproc)
           sudo make install
           sudo sh -c "echo extension=swoole > /etc/php/${{ matrix.php-version }}/cli/conf.d/swoole.ini"
