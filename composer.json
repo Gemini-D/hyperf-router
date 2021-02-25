@@ -1,15 +1,15 @@
 {
-    "name": "gemini/hyperf-middleware",
+    "name": "gemini/hyperf-router",
     "type": "library",
     "license": "MIT",
     "keywords": [
         "php",
         "hyperf"
     ],
-    "description": "Some features for Hyperf Middleware.",
+    "description": "Some features for Hyperf Router.",
     "autoload": {
         "psr-4": {
-            "Gemini\\Middleware\\": "src/"
+            "Gemini\\Router\\": "src/"
         }
     },
     "autoload-dev": {
@@ -42,7 +42,7 @@
     },
     "extra": {
         "hyperf": {
-            "config": "Gemini\\Middleware\\ConfigProvider"
+            "config": "Gemini\\Router\\ConfigProvider"
         }
     }
 }
