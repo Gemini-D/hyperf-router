@@ -121,6 +121,10 @@ class RouteCollector
 
     protected function getRouteParser(HyperfRouteCollector $collector): RouteParser
     {
+        if (method_exists($collector, 'getRouteParser')) {
+            return $collector->getRouteParser();
+        }
+
         if (class_exists(ClassInvoker::class)) {
             return (new ClassInvoker($collector))->routeParser;
         }
