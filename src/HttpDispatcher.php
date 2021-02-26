@@ -45,7 +45,6 @@ class HttpDispatcher extends \Hyperf\Dispatcher\HttpDispatcher
                 [$class, $method] = $handler;
                 $withoutMiddlewares = [];
                 if ($annotation = AnnotationCollector::getClassAnnotation($class, WithoutMiddleware::class)) {
-                    var_dump($annotation);
                     $withoutMiddlewares = $annotation->middlewares;
                 }
 
