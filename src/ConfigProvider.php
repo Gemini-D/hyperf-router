@@ -11,6 +11,7 @@ declare(strict_types=1);
  */
 namespace Gemini\Router;
 
+use Gemini\Router\Listener\HttpDispatcherCheckListener;
 use Gemini\Router\Listener\InitRouteCollectorListener;
 
 class ConfigProvider
@@ -20,6 +21,10 @@ class ConfigProvider
         return [
             'listeners' => [
                 InitRouteCollectorListener::class,
+                HttpDispatcherCheckListener::class,
+            ],
+            'dependencies' => [
+                \Hyperf\Dispatcher\HttpDispatcher::class => HttpDispatcher::class,
             ],
             'annotations' => [
                 'scan' => [
