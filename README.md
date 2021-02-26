@@ -8,7 +8,9 @@ composer require gemini/hyperf-router
 
 ## 路由名字
 
-- 设置路有名字
+### 设置路由名字
+
+- 路由文件模式
 
 ```php
 <?php
@@ -19,7 +21,39 @@ Router::get('/user/{id:\d+}', 'App\Controller\UserController::info', ['name' => 
 Router::get('/user', 'App\Controller\UserController::index', ['name' => 'user.list']);
 ```
 
-- 根据路有名字读取路径
+- 注解模式
+  
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace App\Controller;
+
+use Hyperf\HttpServer\Annotation\Controller;
+use Hyperf\HttpServer\Annotation\GetMapping;
+use function Gemini\Router\route;
+
+/**
+ * @Controller(prefix="/user")
+ */
+class UserController
+{
+    /**
+     * @GetMapping(path="info/{id:\d+}", options={"name": "user.info"})
+     */
+    public function info(int $id)
+    {
+        return [
+            'id' => $id,
+            'next_path' => route('user.info', ['id' => ++$id]),
+        ];
+    }
+}
+
+```
+
+### 根据路有名字读取路径
 
 ```php
 <?php
