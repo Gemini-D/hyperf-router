@@ -64,7 +64,6 @@ var_dump(route('index'));
 var_dump(route('user.info', [1]));
 ```
 
-
 ## 排除中间件
 
 组件提供了 `Gemini\Router\Annotation\WithoutMiddleware` 注解，可以方便用户排除不想被触发的中间件。
