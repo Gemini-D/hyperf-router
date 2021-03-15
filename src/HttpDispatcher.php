@@ -42,13 +42,14 @@ class HttpDispatcher extends \Hyperf\Dispatcher\HttpDispatcher
         if ($dispatched->isFound()) {
             $callback = $dispatched->handler->callback;
             if ($handler = static::prepareHandler($callback)) {
-                [$class, $method] = $handler;
+                $class = $handler[0];
+                $method = $handler[1] ?? null;
                 $withoutMiddlewares = [];
                 if ($annotation = AnnotationCollector::getClassAnnotation($class, WithoutMiddleware::class)) {
                     $withoutMiddlewares = $annotation->middlewares;
                 }
 
-                if ($annotation = AnnotationCollector::getClassMethodAnnotation($class, $method)[WithoutMiddleware::class] ?? null) {
+                if ($method && $annotation = AnnotationCollector::getClassMethodAnnotation($class, $method)[WithoutMiddleware::class] ?? null) {
                     $withoutMiddlewares = array_merge($withoutMiddlewares, $annotation->middlewares);
                 }
 
